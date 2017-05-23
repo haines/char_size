@@ -43,6 +43,12 @@ static VALUE minmax(VALUE class, VALUE encoding_or_name)
     return rb_assoc_new(min, max);
 }
 
+/*
+ * Document-module: CharSize
+ *
+ * The +CharSize+ module provides functions that return the character size
+ * limits of encodings.
+ */
 void Init_char_size(void)
 {
     VALUE CharSize = rb_define_module("CharSize");
