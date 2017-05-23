@@ -9,7 +9,8 @@
  *   CharSize.min("UTF-8")         # => 1
  *   CharSize.min(Encoding::UTF_8) # => 1
  */
-static VALUE min(VALUE class, VALUE encoding_or_name)
+static VALUE
+min(VALUE class, VALUE encoding_or_name)
 {
     return INT2NUM(ONIGENC_MBC_MINLEN(rb_to_encoding(encoding_or_name)));
 }
@@ -22,7 +23,8 @@ static VALUE min(VALUE class, VALUE encoding_or_name)
  *   CharSize.max("UTF-8")         # => 6
  *   CharSize.max(Encoding::UTF_8) # => 6
  */
-static VALUE max(VALUE class, VALUE encoding_or_name)
+static VALUE
+max(VALUE class, VALUE encoding_or_name)
 {
     return INT2NUM(ONIGENC_MBC_MAXLEN(rb_to_encoding(encoding_or_name)));
 }
@@ -35,7 +37,8 @@ static VALUE max(VALUE class, VALUE encoding_or_name)
  *   CharSize.minmax("UTF-8")         # => [1, 6]
  *   CharSize.minmax(Encoding::UTF_8) # => [1, 6]
  */
-static VALUE minmax(VALUE class, VALUE encoding_or_name)
+static VALUE
+minmax(VALUE class, VALUE encoding_or_name)
 {
     rb_encoding *enc = rb_to_encoding(encoding_or_name);
     VALUE min = INT2NUM(ONIGENC_MBC_MINLEN(enc));
@@ -49,7 +52,8 @@ static VALUE minmax(VALUE class, VALUE encoding_or_name)
  * The +CharSize+ module provides functions that return the character size
  * limits of encodings.
  */
-void Init_char_size(void)
+void
+Init_char_size(void)
 {
     VALUE CharSize = rb_define_module("CharSize");
     rb_define_singleton_method(CharSize, "min", min, 1);
